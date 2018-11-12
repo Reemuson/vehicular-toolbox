@@ -1,0 +1,32 @@
+if CLIENT then
+    function ENT:Initialize()
+        self.Enabled = false
+        self.Throttle = 0
+
+        self.WireDebugName = "VT Procedural Engine"
+    end
+
+    function ENT:Update()
+    end
+
+    function VT_CreateEngine()
+        -- creating entity and sanity checking
+        local Engine = ents.Create("vt_engine")
+        if not isValid(Engine) then return false end
+
+        -- variable init
+        Engine.Mass = 0
+
+        -- initializing physics
+        Engine.PhysicsInit(SOLID_VPHYSICS)
+        Engine.SetMoveType(MOVETYPE_VPHYSICS)
+        Engine.SetSolid(SOLID_VPHYSICS)
+
+        local enginephys = Engine.GetPhysicsObject()
+        if isValid(enginephys) then
+            enginephys.SetMass(Engine.Mass)
+        end
+    end
+
+
+end
