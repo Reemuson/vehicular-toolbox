@@ -27,6 +27,4 @@ if CLIENT then
             enginephys.SetMass(Engine.Mass)
         end
     end
-
-
 end
